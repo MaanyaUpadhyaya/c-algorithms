@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int sequentialsearch(int a[],int k,int n)
+{
+    int i=0;
+    a[n]=k;
+    while(a[i]!=k)
+    {
+        i++;
+    }
+    if(i<n)
+        return i;
+    else
+        return -1;
+}
+int main()
+{
+    int a[100],n,k;
+    int i;
+    clock_t start,end;
+    double t;
+    printf("Enter the size of the array: ");
+    scanf("%d",&n);
+    printf("Enter the array elemets: \n");
+    for(i=0;i<n;i++)
+        scanf("%d",&a[i]);
+    printf("Enter the search key: ");
+    scanf("%d",&k);
+    start=clock();
+    int index;
+    index=sequentialsearch(a,k,n);
+    end=clock();
+    t=(double)(end-start)/CLOCKS_PER_SEC;
+    if(index==-1)
+        printf("Key %d is not found in the array \n ",k);
+    else
+        printf("Key %d found in index %d\n ",k,index);
+    printf("the time taken = %f seconds",t);
+    return 0;
+}
